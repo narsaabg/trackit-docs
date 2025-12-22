@@ -1,0 +1,6 @@
+
+{
+  "name": "TrackIt - Server Side & GTM",
+  "description": "Accurate server-side tracking for Shopify. Bypass iOS limitations and stop losing conversion data.",
+  "requestFramePermissions": []
+}
