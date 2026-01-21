@@ -20,7 +20,6 @@ const Navbar = () => {
         <div className="flex items-center gap-10">
           <Link to="/" className="flex items-center group">
             <div className="h-8 w-8 flex items-center justify-center transition-transform group-hover:scale-105">
-              {/* <span className="text-[10px] font-bold text-white uppercase tracking-tighter">T</span> */}
               <img src="./logo.png" alt="track it " />
             </div>
             <span className="text-sm font-bold tracking-tight text-zinc-900 uppercase">
