@@ -1,18 +1,16 @@
 import React from "react";
 
+//"New","Improvement","Fixed","Added"
 const releases = [
-  // {
-  //   version: "1.4.2",
-  //   date: "March 20, 2024",
-  //   entries: [
-  //     { type: "New", text: "Support for TikTok Event API (Server-Side)." },
-  //     { type: "Improvement", text: "Optimized Meta CAPI deduplication logic." },
-  //     {
-  //       type: "Fixed",
-  //       text: "Resolved minor latency in Shopify Plus checkout pixel.",
-  //     },
-  //   ],
-  // },
+  {
+    version: "1.2.0",
+    date: "January 21, 2026",
+    entries: [
+      { type: "Improvement", text: "Enhanced tracking capabilities and accuracy." },
+      { type: "Added", text: "Service installation date visibility." },
+      { type: "Added", text: "Order count and percentage tracking per service in reports." },
+    ],
+  },
   {
     version: "1.1.0",
     date: "December 30, 2025",
@@ -104,13 +102,12 @@ export default function ChangelogPage() {
                   {rel.entries.map((entry, idx) => (
                     <li key={idx} className="flex gap-3">
                       <span
-                        className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest h-fit mt-1 ${
-                          entry.type === "New"
-                            ? "bg-blue-100 text-blue-700"
-                            : entry.type === "Fixed"
+                        className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest h-fit mt-1 ${entry.type === "New"
+                          ? "bg-blue-100 text-blue-700"
+                          : entry.type === "Fixed"
                             ? "bg-zinc-100 text-zinc-500"
                             : "bg-zinc-900 text-white"
-                        }`}
+                          }`}
                       >
                         {entry.type}
                       </span>
