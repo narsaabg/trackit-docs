@@ -20,7 +20,7 @@ const CodeSnippet = ({ code }: { code: string }) => {
   return (
     <div className="relative group my-8">
       <div className="absolute top-3 right-3 z-10">
-        <button 
+        <button
           onClick={handleCopy}
           className="p-1.5 rounded-md border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white transition-colors flex items-center gap-2"
         >
@@ -51,9 +51,9 @@ export default function DocsPage() {
         <div className="relative mb-8">
           <div className={`flex items-center gap-3 px-3 py-2 rounded-lg border transition-all ${isSearchFocused ? 'border-blue-600 ring-4 ring-blue-50' : 'border-zinc-200'}`}>
             <Search size={14} className="text-zinc-400" />
-            <input 
-              type="text" 
-              placeholder="Search..." 
+            <input
+              type="text"
+              placeholder="Search..."
               className="bg-transparent text-xs font-medium focus:outline-none w-full"
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setTimeout(() => setIsSearchFocused(false), 200) }
@@ -103,7 +103,7 @@ export default function DocsPage() {
           <article className="prose prose-zinc max-w-none">
             <h1 className="text-4xl font-black tracking-tight text-zinc-950 mb-6">Introduction</h1>
             <p className="text-lg text-zinc-500 leading-relaxed font-medium mb-12">
-              TrackIt is the developer-preferred standard for server-side event orchestration on Shopify. 
+              TrackIt is the developer-preferred standard for server-side event orchestration on Shopify.
               Our platform ensures your marketing data is accurate, compliant, and unaffected by client-side browser restrictions.
             </p>
 
@@ -143,7 +143,7 @@ export default function DocsPage() {
 window.TrackIt.push({
   event: 'custom_conversion',
   data: {
-    revenue: 49.99,
+    revenue: 14.99,
     source: 'custom_button'
   }
 });`} />

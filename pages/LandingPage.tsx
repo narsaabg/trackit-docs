@@ -34,7 +34,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "49.99",
+    price: "14.99",
     limit: "Unlimited orders",
     description: "Built for high-volume commerce operations.",
     features: [
