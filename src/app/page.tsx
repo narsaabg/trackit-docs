@@ -280,7 +280,7 @@ export default function LandingPage() {
                                dest.component
                              ) : (
                                <img 
-                                 src={dest.url || `https://cdn.simpleicons.org/${dest.slug}`} 
+                                 src={`https://cdn.simpleicons.org/${dest.slug}`} 
                                  alt={dest.name} 
                                  className="w-full h-full object-contain"
                                />
