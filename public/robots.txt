@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trakit.com/sitemap.xml
+Sitemap: https://trakit.store/sitemap.xml
