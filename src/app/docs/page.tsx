@@ -22,7 +22,7 @@ export default function DocsPage() {
           </div>
           <h3 className="text-xl font-black text-zinc-900 mb-2">Quick Start</h3>
           <p className="text-sm text-zinc-500 font-medium mb-6">Get TrakIt up and running in under 5 minutes with our no-code setup.</p>
-          <Link href="/docs/quick-start" className="text-sm font-black text-primary-500 flex items-center gap-1 hover:gap-2 transition-all">
+          <Link href="/docs/shopify-multi-pixel-tracking-quick-start-guide" className="text-sm font-black text-primary-500 flex items-center gap-1 hover:gap-2 transition-all">
             Read Guide <ArrowRight size={16} />
           </Link>
         </div>
@@ -32,7 +32,7 @@ export default function DocsPage() {
           </div>
           <h3 className="text-xl font-black text-zinc-900 mb-2">App Installation</h3>
           <p className="text-sm text-zinc-500 font-medium mb-6">Comprehensive instructions for installing TrakIt and configuring pricing plans.</p>
-          <Link href="/docs/installation" className="text-sm font-black text-purple-500 flex items-center gap-1 hover:gap-2 transition-all">
+          <Link href="/docs/shopify-pixels-conversions-app-installation-pricing" className="text-sm font-black text-purple-500 flex items-center gap-1 hover:gap-2 transition-all">
             View Guide <ArrowRight size={16} />
           </Link>
         </div>

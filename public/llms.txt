@@ -1,0 +1,29 @@
+# TrakIt Documentation
+
+> TrakIt is the industry-standard multi-channel server-side tracking solution for Shopify store owners. It bypasses ad-blockers, browser cookie restrictions (ITP), and iOS limitations to capture and attribute 100% of e-commerce conversions.
+
+## Getting Started
+
+- [Quick Start Guide](https://trakit.com/docs/shopify-multi-pixel-tracking-quick-start-guide): Set up server-side event tracking, connect Google accounts via OAuth, and run live verification tests in under 5 minutes.
+- [App Installation & Authorization](https://trakit.com/docs/shopify-pixels-conversions-app-installation-pricing): Learn how to install TrakIt from the Shopify App Store, configure proxy pathways, select a subscription plan, and apply promotional discounts.
+
+## Active Service Integrations
+
+- [Google Tag Manager](https://trakit.com/docs/google-tag-manager-gtm-shopify-pixels-setup): Configure custom sandbox script injections, OAuth automatic container setups, and manual imports.
+- [Google Analytics 4](https://trakit.com/docs/shopify-google-analytics-4-ga4-integration-setup): Deploy web streams and Measurement Protocol server conversion tracking, including purchase, refund, and user metadata enrichment.
+- [Google Ads](https://trakit.com/docs/shopify-google-ads-conversion-tracking-setup-guide): Connect Conversion IDs and labels, automatically import tags, and measure precise conversion lift.
+- [Meta Facebook Pixel](https://trakit.com/docs/facebook-pixel-conversions-api-capi-shopify-setup): Integrate Facebook Conversions API (CAPI) with client/server deduplication via unique Event IDs and first-party cookies.
+- [TikTok Ads](https://trakit.com/docs/shopify-tiktok-ads-pixel-events-api-setup): Integrate TikTok Pixels and Developer Events API with full client-server data alignment.
+- [Snapchat Ads](https://trakit.com/docs/snapchat-pixel-conversions-api-shopify-integration): Connect Snapchat Pixel and Snapchat Conversions API (CAPI) server events.
+- [Pinterest Ads](https://trakit.com/docs/pinterest-ads-tag-conversions-api-shopify-setup): Setup Pinterest Conversion Tag and CAPI tracking.
+- [Bing Ads](https://trakit.com/docs/bing-microsoft-uet-tag-shopify-conversion-tracking): Implement Microsoft Advertising Universal Event Tracking (UET) tag conversion tracking.
+- [Klaviyo](https://trakit.com/docs/klaviyo-shopify-server-side-tracking-setup): Connect Public and Private API keys to track user profile milestones, signup events, and newsletter subscriptions.
+- [Microsoft Clarity](https://trakit.com/docs/microsoft-clarity-shopify-session-recording-heatmap): Setup clarity tracking codes for store heatmaps and session replays.
+
+## Advanced Concepts & Troubleshooting
+
+- [Server-Side Architecture](https://trakit.com/docs/shopify-server-side-tracking-conversions-api-architecture): Deep-dive into edge routing, cookie lifetime restoration under ITP, matching algorithms, and automated failed event queues.
+- [Custom Events & logs](https://trakit.com/docs/custom-event-tracking-logs-shopify): Track custom JavaScript selectors, page variables, and monitor custom storefront behaviors.
+- [Advanced Settings](https://trakit.com/docs/advanced-shopify-tracking-consent-mode-settings): Manage Google Consent Mode v2, local browser console datalayer logging, and database pixel refresh.
+- [Marketing & Order Reports](https://trakit.com/docs/shopify-marketing-attribution-order-tracking-reports): Use the Reports panel to inspect tracked orders, multi-platform success logs, and UTM attribution source mapping.
+- [Diagnostics & Logs](https://trakit.com/docs/real-time-shopify-conversion-diagnostics-logs-audit): Audit storefront events in real-time, inspect API request payloads, and troubleshoot HTTP API response codes.

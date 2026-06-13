@@ -152,7 +152,7 @@ export default function InstallationPage() {
           </p>
         </div>
         <Link
-          href="/docs/quick-start"
+          href="/docs/shopify-multi-pixel-tracking-quick-start-guide"
           className="text-xs font-black text-primary-500 hover:text-primary-400 flex items-center gap-1 transition-all"
         >
           Check Quick Start Guide <ArrowRight size={14} />

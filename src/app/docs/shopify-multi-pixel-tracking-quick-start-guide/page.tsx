@@ -14,25 +14,25 @@ export default function QuickStartPage() {
       step: "01",
       title: "Install the TrakIt App",
       desc: "Add TrakIt to your Shopify store from the Shopify App Store to automatically register custom pixels.",
-      href: "/docs/installation",
+      href: "/docs/shopify-pixels-conversions-app-installation-pricing",
     },
     {
       step: "02",
       title: "Activate a Plan",
       desc: "Choose a subscription that fits your volume. Free plan covers up to 100 orders/month with zero commitment.",
-      href: "/docs/installation#pricing-plans",
+      href: "/docs/shopify-pixels-conversions-app-installation-pricing#pricing-plans",
     },
     {
       step: "03",
       title: "Run Automatic Google Setup",
       desc: "Connect your Google account via OAuth. TrakIt will automatically create GTM variables, triggers, and tags.",
-      href: "/docs/google-ads-setup",
+      href: "/docs/shopify-google-ads-conversion-tracking-setup-guide",
     },
     {
       step: "04",
       title: "Verify Conversion Data",
       desc: "Place a test order or visit the diagnostics tab to view real-time payload deliveries to GA4 and Meta Pixel.",
-      href: "/docs/server-side-tracking",
+      href: "/docs/shopify-server-side-tracking-conversions-api-architecture",
     },
   ];
 
@@ -127,7 +127,7 @@ export default function QuickStartPage() {
           </p>
         </div>
         <Link
-          href="/docs/installation"
+          href="/docs/shopify-pixels-conversions-app-installation-pricing"
           className="bg-primary-500 text-white hover:bg-primary-600 px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all whitespace-nowrap shadow-md shadow-primary-500/10"
         >
           Detailed Installation Guide
