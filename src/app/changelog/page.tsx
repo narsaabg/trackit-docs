@@ -11,6 +11,45 @@ const fadeIn = {
 
 const changelogData = [
   {
+    version: "v2.0.0",
+    date: "June 8, 2026",
+    updates: [
+      { type: "New", text: "Google OAuth integration with automatic reconnection when OAuth tokens expire.", icon: <Zap size={14} /> },
+      { type: "New", text: "Automatic service setup featuring automated Google Tag Manager (GTM) triggers, variables, and tags creation.", icon: <Zap size={14} /> },
+      { type: "New", text: "Automatic GTM container publishing upon changes.", icon: <Zap size={14} /> },
+      { type: "New", text: "Google Ads conversion creation automation.", icon: <Zap size={14} /> },
+      { type: "Improvement", text: "App rebranded from \"TrackIt\" to \"TrakIt\" (including domain and config updates).", icon: <TrendingUp size={14} /> },
+      { type: "Improvement", text: "Updated Supabase edge functions, transitioned to TrakItDatalayer tracking variables, and improved AWS endpoint and proxy event routing.", icon: <TrendingUp size={14} /> },
+    ]
+  },
+  {
+    version: "v1.4.0",
+    date: "May 10, 2026",
+    updates: [
+      { type: "New", text: "Native Klaviyo service integration supporting login, signup, and newsletter subscription events.", icon: <Zap size={14} /> },
+      { type: "New", text: "Expanded \"GTM-less\" pixel tracking for Snapchat, Pinterest, and Clarity, with automatic hiding of GTM when GTM-less mode is active.", icon: <Zap size={14} /> },
+      { type: "Improvement", text: "Added a promotional code system for development stores (10% extra discount).", icon: <TrendingUp size={14} /> },
+      { type: "Improvement", text: "Plan details and billing test charges shown directly on the Shopify approval page.", icon: <TrendingUp size={14} /> },
+    ]
+  },
+  {
+    version: "v1.3.0",
+    date: "May 3, 2026",
+    updates: [
+      { type: "New", text: "Bing Ads tracking integration, custom config UI, and enhanced conversions.", icon: <Zap size={14} /> },
+      { type: "New", text: "GTM-less tracking for Meta Pixel (custom pixel integration) respecting user consent.", icon: <Zap size={14} /> },
+      { type: "Improvement", text: "Performance optimization by removing heavy server-side load events and adding selective logging.", icon: <TrendingUp size={14} /> },
+    ]
+  },
+  {
+    version: "v1.2.1",
+    date: "April 19, 2026",
+    updates: [
+      { type: "New", text: "Synchronized Shopify subscriptions database records on backend webhook triggers.", icon: <Zap size={14} /> },
+      { type: "Improvement", text: "Refactored the dashboard layout and optimized the pricing plan changes interface.", icon: <TrendingUp size={14} /> },
+    ]
+  },
+  {
     version: "v1.2.0",
     date: "January 21, 2026",
     updates: [
