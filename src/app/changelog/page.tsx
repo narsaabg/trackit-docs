@@ -11,6 +11,15 @@ const fadeIn = {
 
 const changelogData = [
   {
+    version: "v2.1.0",
+    date: "June 26, 2026",
+    updates: [
+      { type: "New", text: "Added a real-time Event Log viewer to monitor, and filter, tracking events as they are sent to destinations.", icon: <Zap size={14} /> },
+      { type: "New", text: "Introduced recovered attribution analytics, tracking conversion recovery and revenue saved via ad-block bypasses and Safari ITP cookieless restoration.", icon: <Zap size={14} /> },
+      { type: "New", text: "Added download and export options for tracked orders and pixel events, allowing reports to be easily exported for offline analysis.", icon: <Zap size={14} /> },
+    ]
+  },
+  {
     version: "v2.0.0",
     date: "June 8, 2026",
     updates: [
