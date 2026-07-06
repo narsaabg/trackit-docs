@@ -9,7 +9,7 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen blueprint-grid pt-32 pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-card p-10 md:p-16">
+        <div>
           <div className="mb-12">
             <div className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-500 mb-4">Legal</div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-6">Terms of Service</h1>

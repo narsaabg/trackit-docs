@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen blueprint-grid">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 flex flex-col md:flex-row gap-16">
         {/* Sidebar Navigation */}
         <aside className="w-full md:w-64 flex-shrink-0">
           <DocsSidebar />
@@ -18,7 +18,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
         {/* Main Content Area */}
         <div className="flex-1 min-w-0 pb-24">
-          <div className="bg-white/50 backdrop-blur-sm border border-zinc-100 rounded-[2.5rem] p-8 md:p-16 shadow-xl shadow-zinc-200/20">
+          <div className="p-2 md:p-4">
             {children}
           </div>
         </div>

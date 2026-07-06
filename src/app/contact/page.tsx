@@ -42,8 +42,8 @@ export default function ContactPage() {
                 { icon: <MessageSquare className="text-purple-500" size={24} />, title: "Live Chat", detail: "Available Mon-Fri, 9am-6pm EST", bg: "bg-purple-500/5" },
                 { icon: <Clock className="text-emerald-500" size={24} />, title: "Response Time", detail: "Usually within 4-6 hours", bg: "bg-emerald-500/5" }
               ].map((item, i) => (
-                <div key={i} className="flex gap-6 p-6 rounded-2xl bg-white border border-zinc-100 shadow-sm hover:shadow-md transition-all group">
-                  <div className={`p-4 ${item.bg} rounded-xl h-fit border border-zinc-50 group-hover:scale-110 transition-transform`}>
+                <div key={i} className="flex gap-6 py-4 transition-all group">
+                  <div className={`p-4 ${item.bg} rounded-xl h-fit group-hover:scale-110 transition-transform`}>
                     {item.icon}
                   </div>
                   <div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
             initial="hidden"
             animate="visible"
             variants={fadeIn}
-            className="glass-card p-10 md:p-12"
+            className="p-2 md:p-4"
           >
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

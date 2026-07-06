@@ -23,27 +23,6 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
-const KlaviyoIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 18" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24l-6 9 6 9H0z" />
-  </svg>
-);
-
-const MicrosoftIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 23 23" className={className} xmlns="http://www.w3.org/2000/svg">
-    <path fill="#f35022" d="M0 0h11v11H0z"/>
-    <path fill="#80bb03" d="M12 0h11v11H12z"/>
-    <path fill="#03a4ef" d="M0 12h11v11H0z"/>
-    <path fill="#ffb903" d="M12 12h11v11H12z"/>
-  </svg>
-);
-
-const BingIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
-    <path d="M10.102 1.167L3.148 12l3.037 4.24L10.102 1.167zM10.102 1.167l6.954 10.833h-6.954V1.167zM10.102 11.999l6.954 10.833l3.037-4.24l-6.954-10.833H10.102zM10.102 11.999H3.148L10.102 22.832V11.999z" />
-  </svg>
-);
-
 export default function LandingPage() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly");
 
@@ -116,18 +95,20 @@ export default function LandingPage() {
              {/* Repeat logos for infinite effect */}
              {[...Array(2)].map((_, i) => (
                <React.Fragment key={i}>
-                <img src="https://cdn.simpleicons.org/googleads" alt="Google Ads" className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/meta" alt="Meta" className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/tiktok" alt="TikTok" className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/pinterest" alt="Pinterest" className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/snapchat" alt="Snapchat" className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/googleanalytics" alt="GA4" className="h-8 w-auto flex-shrink-0" />
-                <KlaviyoIcon className="h-8 w-auto flex-shrink-0 text-zinc-900" />
-                <BingIcon className="h-8 w-auto flex-shrink-0 text-[#008373]" />
-                <img src="https://cdn.simpleicons.org/shopify" alt="Shopify" className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/googletagmanager" alt="GTM" className="h-8 w-auto flex-shrink-0" />
-                <MicrosoftIcon className="h-8 w-auto flex-shrink-0" />
-                <img src="https://cdn.simpleicons.org/hotjar" alt="Hotjar" className="h-8 w-auto flex-shrink-0" />
+                 <img src="/images/google_ads.png" alt="Google Ads" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/meta_ads.png" alt="Meta" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/tiktok_ads.png" alt="TikTok" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/pinterest_ads.png" alt="Pinterest" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/snapchat_ads.png" alt="Snapchat" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/google_analytics_4.png" alt="GA4" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/klaviyo.png" alt="Klaviyo" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/bing_ads.png" alt="Bing Ads" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="https://cdn.simpleicons.org/shopify" alt="Shopify" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/google_tag_manager.png" alt="GTM" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/microsoft_clarity.png" alt="Microsoft Clarity" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/hotjar.png" alt="Hotjar" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/reddit_ads.png" alt="Reddit Ads" className="h-8 w-auto flex-shrink-0 object-contain" />
+                 <img src="/images/consentmo.png" alt="Consentmo" className="h-8 w-auto flex-shrink-0 object-contain" />
                </React.Fragment>
              ))}
           </div>
@@ -257,34 +238,32 @@ export default function LandingPage() {
                <div className="bg-[#f8f9fa] rounded-[2.5rem] p-10 border border-zinc-100 shadow-xl shadow-zinc-200/50">
                   <div className="flex justify-between items-center mb-10">
                      <span className="text-sm font-black text-zinc-900">Active destinations</span>
-                     <span className="text-xs font-bold text-zinc-400">11 of 11 connected</span>
+                     <span className="text-xs font-bold text-zinc-400">13 of 13 connected</span>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                      {[
-                       { name: "Google Analytics 4", slug: "googleanalytics" },
-                       { name: "Google Ads", slug: "googleads" },
-                       { name: "Meta Ads", slug: "meta" },
-                       { name: "TikTok", slug: "tiktok" },
-                       { name: "Klaviyo", slug: "klaviyo", component: <KlaviyoIcon className="w-full h-full text-zinc-900" /> },
-                       { name: "Bing Ads", slug: "bing", component: <BingIcon className="w-full h-full text-[#008373]" /> },
-                       { name: "Pinterest", slug: "pinterest" },
-                       { name: "Snapchat", slug: "snapchat" },
-                       { name: "Google Tag Manager", slug: "googletagmanager" },
-                       { name: "Microsoft Clarity", slug: "microsoft", component: <MicrosoftIcon className="w-full h-full" /> },
-                       { name: "Hotjar", slug: "hotjar" },
+                       { name: "Google Analytics 4", image: "/images/google_analytics_4.png" },
+                       { name: "Google Ads", image: "/images/google_ads.png" },
+                       { name: "Meta Ads", image: "/images/meta_ads.png" },
+                       { name: "TikTok", image: "/images/tiktok_ads.png" },
+                       { name: "Klaviyo", image: "/images/klaviyo.png" },
+                       { name: "Bing Ads", image: "/images/bing_ads.png" },
+                       { name: "Pinterest", image: "/images/pinterest_ads.png" },
+                       { name: "Snapchat", image: "/images/snapchat_ads.png" },
+                       { name: "Google Tag Manager", image: "/images/google_tag_manager.png" },
+                       { name: "Microsoft Clarity", image: "/images/microsoft_clarity.png" },
+                       { name: "Hotjar", image: "/images/hotjar.png" },
+                       { name: "Reddit Ads", image: "/images/reddit_ads.png" },
+                       { name: "Consentmo GDPR CMP", image: "/images/consentmo.png" },
                      ].map((dest, i) => (
                        <div key={i} className="bg-white p-6 rounded-2xl border border-zinc-100 flex flex-col items-start gap-4 hover:shadow-lg transition-all hover:-translate-y-1">
-                          <div className="w-10 h-10 flex items-center justify-center p-2">
-                             {dest.component ? (
-                               dest.component
-                             ) : (
-                               <img 
-                                 src={`https://cdn.simpleicons.org/${dest.slug}`} 
-                                 alt={dest.name} 
-                                 className="w-full h-full object-contain"
-                               />
-                             )}
+                          <div className="w-10 h-10 flex items-center justify-center p-1">
+                             <img 
+                               src={dest.image} 
+                               alt={dest.name} 
+                               className="w-full h-full object-contain"
+                             />
                           </div>
                           <div>
                              <div className="text-[10px] font-black leading-tight text-zinc-900 mb-2">{dest.name}</div>
@@ -386,24 +365,28 @@ export default function LandingPage() {
                   </p>
                   <div className="flex items-center gap-4 text-sm font-bold text-zinc-400">
                     <CheckCircle2 size={18} className="text-primary-500" />
-                    <span>11+ Direct Integrations</span>
+                    <span>13+ Direct Integrations</span>
                   </div>
                 </div>
                 <div className="flex-1 order-1 md:order-2 w-full">
                   <div className="glass-card p-12 bg-white/50 backdrop-blur-sm relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-amber-500/20" />
                     <div className="grid grid-cols-4 gap-4">
-                        {['googleads', 'meta', 'tiktok', 'googleanalytics', 'klaviyo', 'microsoftadvertising', 'googletagmanager', 'microsoft', 'hotjar'].map((s, i) => (
-                          <div key={i} className="aspect-square bg-zinc-50 rounded-2xl flex items-center justify-center p-3 transition-all border border-zinc-100 shadow-sm hover:scale-110 hover:shadow-md">
-                            {s === 'klaviyo' ? (
-                              <KlaviyoIcon className="w-full h-full text-zinc-900" />
-                            ) : s === 'microsoftadvertising' ? (
-                              <BingIcon className="w-full h-full text-[#008373]" />
-                            ) : s === 'microsoft' ? (
-                              <MicrosoftIcon className="w-full h-full" />
-                            ) : (
-                              <img src={`https://cdn.simpleicons.org/${s}`} className="w-full h-full object-contain" />
-                            )}
+                        {[
+                          { name: 'googleads', image: '/images/google_ads.png' },
+                          { name: 'meta', image: '/images/meta_ads.png' },
+                          { name: 'tiktok', image: '/images/tiktok_ads.png' },
+                          { name: 'googleanalytics', image: '/images/google_analytics_4.png' },
+                          { name: 'klaviyo', image: '/images/klaviyo.png' },
+                          { name: 'microsoftadvertising', image: '/images/bing_ads.png' },
+                          { name: 'googletagmanager', image: '/images/google_tag_manager.png' },
+                          { name: 'microsoft', image: '/images/microsoft_clarity.png' },
+                          { name: 'hotjar', image: '/images/hotjar.png' },
+                          { name: 'reddit', image: '/images/reddit_ads.png' },
+                          { name: 'consentmo', image: '/images/consentmo.png' },
+                        ].map((s, i) => (
+                          <div key={i} className="aspect-square bg-zinc-50 rounded-2xl flex items-center justify-center p-4 transition-all border border-zinc-100 shadow-sm hover:scale-110 hover:shadow-md">
+                            <img src={s.image} alt={s.name} className="w-1/2 h-1/2 object-contain" />
                           </div>
                         ))}
                     </div>
@@ -443,23 +426,45 @@ export default function LandingPage() {
                 name="Free"
                 price="$0"
                 description="Perfect for testing"
-                features={["100 orders/month", "Browser + Server tracking", "GTM Integration", "Basic Dashboard"]}
+                features={[
+                  "Multiple destinations included",
+                  "100 orders/month included",
+                  "Client-side and Server-side tracking",
+                  "Recent tracked orders dashboard",
+                  "Email support"
+                ]}
                 buttonText="Current Plan"
                 buttonDisabled
               />
               <PricingCard
-                name="Basic"
-                price={billingCycle === "yearly" ? "$7.99" : "$9.99"}
-                description="Most popular for small stores"
-                features={["1,000 orders/month", "All destinations included", "7-day free trial", "Email support"]}
+                name="Pro"
+                price={billingCycle === "yearly" ? "$299.99" : "$29.99"}
+                period={billingCycle === "yearly" ? "/year" : "/month"}
+                description="For growing stores"
+                features={[
+                  "All destinations included",
+                  "2,000 orders/month included",
+                  "Event Logs Report",
+                  "Advanced dashboard",
+                  "Priority email support",
+                  "7-day free trial",
+                  "Custom integrations support"
+                ]}
                 buttonText="Start Free Trial"
                 highlighted
               />
               <PricingCard
-                name="Pro"
-                price={billingCycle === "yearly" ? "$11.99" : "$14.99"}
-                description="Unlimited scaling"
-                features={["Unlimited* orders", "Priority email support", "Custom integrations", "Advanced analytics"]}
+                name="Advance"
+                price={billingCycle === "yearly" ? "$999.99" : "$99.99"}
+                period={billingCycle === "yearly" ? "/year" : "/month"}
+                description="For enterprise volume"
+                features={[
+                  "Everything in Pro plan",
+                  "Unlimited* orders",
+                  "Priority email support",
+                  "7-day free trial",
+                  "Custom integrations support"
+                ]}
                 buttonText="Start Free Trial"
               />
             </div>
@@ -566,7 +571,8 @@ function PricingCard({
   features,
   highlighted = false,
   buttonText,
-  buttonDisabled = false
+  buttonDisabled = false,
+  period = "/month"
 }: {
   name: string,
   price: string,
@@ -574,7 +580,8 @@ function PricingCard({
   features: string[],
   highlighted?: boolean,
   buttonText: string,
-  buttonDisabled?: boolean
+  buttonDisabled?: boolean,
+  period?: string
 }) {
   return (
     <div className={`rounded-3xl p-10 flex flex-col transition-all duration-300 ${
@@ -592,7 +599,7 @@ function PricingCard({
 
       <div className="mb-10">
         <span className={`text-5xl font-black ${highlighted ? 'text-zinc-900' : 'text-white'}`}>{price}</span>
-        <span className={`text-sm font-bold ml-2 ${highlighted ? 'text-zinc-500' : 'text-white/40'}`}>/month</span>
+        <span className={`text-sm font-bold ml-2 ${highlighted ? 'text-zinc-500' : 'text-white/40'}`}>{period}</span>
       </div>
 
       <button

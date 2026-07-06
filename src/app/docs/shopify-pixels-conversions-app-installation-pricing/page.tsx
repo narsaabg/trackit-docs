@@ -104,20 +104,20 @@ export default function InstallationPage() {
             <tr>
               <td className="px-6 py-4 font-black text-zinc-900">Free</td>
               <td className="px-6 py-4">100 orders / month</td>
-              <td className="px-6 py-4">Browser + Server tracking, GTM Integration, Basic Dashboard. Perfect for testing.</td>
+              <td className="px-6 py-4">Multiple destinations, 100 orders/month, Client-side and Server-side tracking, Recent tracked orders dashboard, Email support.</td>
               <td className="px-6 py-4 text-right font-black text-zinc-900">$0/mo</td>
             </tr>
             <tr>
-              <td className="px-6 py-4 font-black text-zinc-900">Basic</td>
-              <td className="px-6 py-4">1,000 orders / month</td>
-              <td className="px-6 py-4">All destinations included, 7-day free trial, standard email support.</td>
-              <td className="px-6 py-4 text-right font-black text-zinc-900">$9.99/mo <span className="text-[10px] text-zinc-400 font-bold block">($7.99/mo billed yearly)</span></td>
+              <td className="px-6 py-4 font-black text-zinc-900">Pro</td>
+              <td className="px-6 py-4">2,000 orders / month</td>
+              <td className="px-6 py-4">All destinations included, 2,000 orders/month, Event Logs Report, Advanced dashboard, Priority email support, 7-day free trial, Custom integrations support.</td>
+              <td className="px-6 py-4 text-right font-black text-zinc-900">$29.99/mo <span className="text-[10px] text-zinc-400 font-bold block">($299.99/yr billed yearly)</span></td>
             </tr>
             <tr>
-              <td className="px-6 py-4 font-black text-zinc-900">Pro</td>
+              <td className="px-6 py-4 font-black text-zinc-900">Advance</td>
               <td className="px-6 py-4">Unlimited* orders</td>
-              <td className="px-6 py-4">Priority email support, custom integrations, advanced analytics. Built for scaling.</td>
-              <td className="px-6 py-4 text-right font-black text-zinc-900">$14.99/mo <span className="text-[10px] text-zinc-400 font-bold block">($11.99/mo billed yearly)</span></td>
+              <td className="px-6 py-4">Everything in Pro plan, Unlimited* orders, Priority email support, 7-day free trial, Custom integrations support.</td>
+              <td className="px-6 py-4 text-right font-black text-zinc-900">$99.99/mo <span className="text-[10px] text-zinc-400 font-bold block">($999.99/yr billed yearly)</span></td>
             </tr>
           </tbody>
         </table>
@@ -129,7 +129,7 @@ export default function InstallationPage() {
           <div>
             <h4 className="text-zinc-900 text-lg font-black m-0 mb-1">Applying Promotional Codes</h4>
             <p className="text-zinc-600 text-sm font-medium m-0 leading-relaxed">
-              If you have a promotional code (e.g., <strong>10PERCENT</strong>), enter it in the checkout drawer on the Shopify Approval page. This will automatically deduct 10% from your monthly or yearly Basic or Pro plans.
+              If you have a promotional code (e.g., <strong>10PERCENT</strong>), enter it in the checkout drawer on the Shopify Approval page. This will automatically deduct 10% from your monthly or yearly Pro or Advance plans.
             </p>
           </div>
         </div>

@@ -11,6 +11,16 @@ const fadeIn = {
 
 const changelogData = [
   {
+    version: "v2.2.0",
+    date: "July 6, 2026",
+    updates: [
+      { type: "New", text: "Added support for Google Tag Manager (GTM) API Gateway configuration to bypass ad blockers using custom gateway domains.", icon: <Zap size={14} /> },
+      { type: "New", text: "Introduced Category-specific Services differentiation for precise targeting and service-level event handling.", icon: <Zap size={14} /> },
+      { type: "New", text: "Launched the Advanced Dashboard featuring deep tracking diagnostics, real-time analytics, and visual charts.", icon: <Zap size={14} /> },
+      { type: "New", text: "Added compatibility to connect and use existing GTM containers during onboarding and automated setup.", icon: <Zap size={14} /> },
+    ]
+  },
+  {
     version: "v2.1.0",
     date: "June 26, 2026",
     updates: [
@@ -139,7 +149,7 @@ export default function ChangelogPage() {
                 </div>
               </div>
               
-              <div className="glass-card p-8 md:p-10 hover:shadow-2xl hover:shadow-primary-500/5 transition-all">
+              <div>
                 <div className="space-y-6">
                   {item.updates.map((update, i) => (
                     <div key={i} className="flex items-start gap-4 group">
