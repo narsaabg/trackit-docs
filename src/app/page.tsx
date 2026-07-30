@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -14,23 +14,426 @@ import {
   MousePointer2,
   Database,
   Layers,
-  Sparkles
+  Sparkles,
+  Maximize2,
+  X,
+  Activity,
+  Plug,
+  Sliders,
+  Check,
+  ExternalLink,
+  Eye,
+  TrendingUp,
+  Cpu,
+  ChevronLeft,
+  ChevronRight,
+  Grid,
+  Filter
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
+export interface AppHotspot {
+  id: number;
+  title: string;
+  desc: string;
+  badge: string;
+  color: string;
+  top: string;
+  left: string;
+}
+
+export interface AppScreenshotItem {
+  id: string;
+  title: string;
+  category: "Overview" | "Integrations" | "Analytics" | "Reports" | "Setup" | "Settings";
+  src: string;
+  badge: string;
+  desc: string;
+  hotspots: AppHotspot[];
+}
+
+export const APP_SCREENSHOTS: AppScreenshotItem[] = [
+  {
+    id: "overview",
+    title: "Shopify Overview & Real-Time Telemetry",
+    category: "Overview",
+    src: "/images/trakit_overview.png",
+    badge: "Real-Time Telemetry",
+    desc: "Shopify admin overview dashboard tracking rescued conversions, order volume quotas, live event dispatches, and sales trend lines.",
+    hotspots: [
+      {
+        id: 1,
+        title: "External GTM Integration Launcher",
+        desc: "Direct access to external dashboard, GTM tag manager integrations, and server-side dispatches in a clean layout.",
+        badge: "External GTM Launch",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "24%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Rescued Conversions Telemetry",
+        desc: "Monitors and recovers sales data blocked by iOS restrictions, ad-blockers, and browser tracking limits.",
+        badge: "Data Recovery",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "55%",
+        left: "28%"
+      },
+      {
+        id: 3,
+        title: "Order Volume Quota Usage",
+        desc: "Displays real-time tracking quota progress (e.g. 3/2000 orders) with automated quota alerts.",
+        badge: "3/2000 Orders",
+        color: "text-purple-700 border-purple-300 bg-purple-50",
+        top: "55%",
+        left: "50%"
+      },
+      {
+        id: 4,
+        title: "Real-Time Event Stream Counter",
+        desc: "Shows active real-time dispatches firing across your store without page latency (55 events tracked).",
+        badge: "+100.0% Firing",
+        color: "text-amber-700 border-amber-300 bg-amber-50",
+        top: "55%",
+        left: "71%"
+      }
+    ]
+  },
+  {
+    id: "google-setup",
+    title: "Google Tracking Setup & Order Sync Table",
+    category: "Setup",
+    src: "/images/trakit_google_setup.png",
+    badge: "GTM Active",
+    desc: "Automatic tag configuration connecting Google Tag Manager (Container ID: GTM-MCS2G2L2) and real-time order sync table.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Google Tag Manager Integration",
+        desc: "Automatic tag and tracking configuration matching TrackIt email account and active GTM container ID.",
+        badge: "GTM Active",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "28%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Real-Time Orders Sync Stream",
+        desc: "Live stream showing order numbers (#1087, #1086...), converted values in INR, timestamps, and success sync status.",
+        badge: "Real-Time Order Log",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "65%",
+        left: "50%"
+      }
+    ]
+  },
+  {
+    id: "integrations",
+    title: "1-Click Channel Connections Hub",
+    category: "Integrations",
+    src: "/images/trakit_integrations.png",
+    badge: "13+ Connectors",
+    desc: "Connect and manage all marketing channels (GA4, Meta Pixel, Google Ads, Klaviyo, TikTok, Snapchat, Pinterest, Clarity, Bing, Reddit & GDPR Consent) inside Shopify.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Active GA4 & Meta Conversions API",
+        desc: "Google Analytics 4 and Meta Pixel running concurrently with server-side CAPI deduplication.",
+        badge: "Active Telemetry",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "30%",
+        left: "28%"
+      },
+      {
+        id: 2,
+        title: "Google Ads & Snapchat Connectors",
+        desc: "Direct 1-click connectors for Google Ads Conversion and Snapchat Ads with live status toggles.",
+        badge: "Active Advertising",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "30%",
+        left: "72%"
+      },
+      {
+        id: 3,
+        title: "Klaviyo Beta Email Dispatch",
+        desc: "Klaviyo email marketing tracking and server-side event dispatch integration.",
+        badge: "Klaviyo Active",
+        color: "text-purple-700 border-purple-300 bg-purple-50",
+        top: "48%",
+        left: "50%"
+      },
+      {
+        id: 4,
+        title: "Consentmo GDPR Consent Sync",
+        desc: "Respects cookie consent settings automatically while maintaining precision tracking accuracy.",
+        badge: "GDPR Compliant",
+        color: "text-amber-700 border-amber-300 bg-amber-50",
+        top: "82%",
+        left: "72%"
+      }
+    ]
+  },
+  {
+    id: "attribution-analytics",
+    title: "Multi-Touch Attribution Analytics",
+    category: "Analytics",
+    src: "/images/trakit_attribution_analytics.png",
+    badge: "$743.26 Revenue",
+    desc: "Server-side conversion and multi-touch attribution reporting featuring First Click, Last Click, and Sales & Order trend line graphs.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Attribution Model & Date Selector",
+        desc: "Toggle between First Click (Discovery) and Last Click (Conversion) attribution models across customizable date ranges.",
+        badge: "Attribution Control",
+        color: "text-purple-700 border-purple-300 bg-purple-50",
+        top: "24%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Tracked Revenue & Orders Summary",
+        desc: "$743.26 total tracked revenue across 3 successfully attributed store orders.",
+        badge: "$743.26 Tracked",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "38%",
+        left: "33%"
+      },
+      {
+        id: 3,
+        title: "Sales & Order Trend Line Graph",
+        desc: "Visual trend curve plotting sales value ($) and converted orders over time.",
+        badge: "Visual Trend Line",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "70%",
+        left: "50%"
+      }
+    ]
+  },
+  {
+    id: "channel-share",
+    title: "Channel Share & Campaign ROI Breakdown",
+    category: "Reports",
+    src: "/images/trakit_channel_share.png",
+    badge: "Campaign Attribution",
+    desc: "Detailed channel conversion share bar chart comparing Direct/Organic vs Google Ads, and Last-Touch Campaign ROI table.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Channel Conversion Share Bar Chart",
+        desc: "Horizontal bar chart visualizing revenue share breakdown between Direct/Organic traffic and Google Ads.",
+        badge: "Share Breakdown",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "35%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Campaign ROI Last-Touch Table",
+        desc: "Per-campaign breakdown showing Source/Medium, Campaign Name, Orders, Revenue, and Average Order Value (AOV).",
+        badge: "Campaign ROI",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "75%",
+        left: "50%"
+      }
+    ]
+  },
+  {
+    id: "first-last-touch",
+    title: "First Touch vs Last Touch & Time Lag Analysis",
+    category: "Analytics",
+    src: "/images/trakit_first_last_touch.png",
+    badge: "Attribution Models",
+    desc: "Compare revenue generated as the discovery channel vs the closing channel, alongside Time Lag to Conversion and Interactions to Conversion breakdowns.",
+    hotspots: [
+      {
+        id: 1,
+        title: "First Touch vs Last Touch Comparison",
+        desc: "Visual bar chart comparing initial discovery channel revenue against final conversion closing channel.",
+        badge: "First vs Last Touch",
+        color: "text-purple-700 border-purple-300 bg-purple-50",
+        top: "32%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Time Lag to Conversion Meter",
+        desc: "Days elapsed between the initial visitor touchpoint and final purchase completion.",
+        badge: "Time Lag",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "75%",
+        left: "33%"
+      },
+      {
+        id: 3,
+        title: "Interactions to Conversion Touchpoints",
+        desc: "Distribution of channel interactions (1 interaction, 2 interactions, 3+ interactions) before purchasing.",
+        badge: "Multi-Touch Count",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "75%",
+        left: "67%"
+      }
+    ]
+  },
+  {
+    id: "reports-tracked-orders",
+    title: "Tracked Orders & Revenue Reports Table",
+    category: "Reports",
+    src: "/images/trakit_reports_tracked_orders.png",
+    badge: "3 Orders Tracked",
+    desc: "Detailed reports view showing total orders, total revenue ($743.26), attributed orders vs organic/direct, and order date export tables.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Order Volume & Attributed Breakdown",
+        desc: "Total orders (3), total revenue ($743.26), attributed orders (2), and organic/direct orders (1).",
+        badge: "$743.26 Revenue",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "32%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Tracked Orders Sync Stream",
+        desc: "Real-time order table with values in INR, timestamps, and active sync status indicators.",
+        badge: "Real-Time Sync",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "65%",
+        left: "50%"
+      }
+    ]
+  },
+  {
+    id: "reports-order-attribution",
+    title: "Order Attribution & Ad Campaign Source",
+    category: "Reports",
+    src: "/images/trakit_reports_order_attribution.png",
+    badge: "Top Source: Google",
+    desc: "Deep attribution reporting highlighting Top Ad Source (Google) and Top Ad Campaign name matching landing page URLs.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Top Ad Source & Campaign Banner",
+        desc: "Highlights top performing ad channels (Google) and top revenue generating campaign strings.",
+        badge: "Top Source: Google",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "32%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Order Source & Landing Page Mapping",
+        desc: "Maps order IDs (#1087, #1086...) to specific ad sources (Google vs Organic), campaign IDs, and landing pages.",
+        badge: "Campaign Mapping",
+        color: "text-purple-700 border-purple-300 bg-purple-50",
+        top: "65%",
+        left: "50%"
+      }
+    ]
+  },
+  {
+    id: "reports-event-logs",
+    title: "Server Event Logs & Dispatch Stream",
+    category: "Reports",
+    src: "/images/trakit_reports_event_logs.png",
+    badge: "79 Events Fired",
+    desc: "Raw server-side dispatch log stream tracking 79 total events (Purchase, Add To Cart) across Google Ads, Klaviyo, GA4, Snapchat, and Meta Ads.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Multi-Filter Log Controls",
+        desc: "Filter dispatch logs by Service, Firing Status (Success/Failed), Event Type, and Date Range.",
+        badge: "Filter Controls",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "32%",
+        left: "30%"
+      },
+      {
+        id: 2,
+        title: "79 Events Dispatched (0% Failure)",
+        desc: "Monitor server dispatch performance with 79 total events fired and 0 failed dispatches.",
+        badge: "100% Reliability",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "45%",
+        left: "50%"
+      },
+      {
+        id: 3,
+        title: "Real-Time Event Stream Log Table",
+        desc: "Detailed log rows tracking event name, target destination service, exact timestamp, and green success badge.",
+        badge: "Live Event Log",
+        color: "text-purple-700 border-purple-300 bg-purple-50",
+        top: "75%",
+        left: "50%"
+      }
+    ]
+  },
+  {
+    id: "settings",
+    title: "Advanced App Settings & Web Pixel Controls",
+    category: "Settings",
+    src: "/images/trakit_settings.png",
+    badge: "App Controls",
+    desc: "Configure user consent policies, browser console debugging, GTM-less native tracking mode, and instant Web Pixel sync.",
+    hotspots: [
+      {
+        id: 1,
+        title: "Respect User Consent & Privacy Controls",
+        desc: "Manage how user cookie consent is handled automatically for full compliance with GDPR, CCPA, and ePrivacy rules.",
+        badge: "GDPR Consent Control",
+        color: "text-amber-700 border-amber-300 bg-amber-50",
+        top: "35%",
+        left: "50%"
+      },
+      {
+        id: 2,
+        title: "Console Debugging & GTM-less Tracking",
+        desc: "Enable browser console inspect logs and run native tracking without requiring a Google Tag Manager container.",
+        badge: "Native Tracking",
+        color: "text-blue-700 border-blue-300 bg-blue-50",
+        top: "55%",
+        left: "50%"
+      },
+      {
+        id: 3,
+        title: "Instant Web Pixel Sync Refresh",
+        desc: "Forces the Shopify Web Pixel extension to sync all configuration tokens directly from app database.",
+        badge: "Web Pixel Refresh",
+        color: "text-emerald-700 border-emerald-300 bg-emerald-50",
+        top: "80%",
+        left: "70%"
+      }
+    ]
+  }
+];
+
 export default function LandingPage() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly");
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; title: string; desc: string } | null>(null);
+  const [activeScreenshotId, setActiveScreenshotId] = useState<string>("overview");
+  const [selectedHotspot, setSelectedHotspot] = useState<number>(1);
+
+  // Close lightbox on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLightboxImage(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-white selection:bg-primary-500 selection:text-white">
       <main className="flex-1 pt-20">
         {/* Hero Section */}
-        <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-40 blueprint-grid overflow-hidden">
+        <section className="relative pt-24 pb-8 lg:pt-32 lg:pb-12 blueprint-grid overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial="hidden"
@@ -83,6 +486,148 @@ export default function LandingPage() {
                 <span className="pl-6 text-sm font-bold text-zinc-900">Used by 1,000+ stores</span>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Dynamic Multi-Screenshot Hotspot Studio Showcase (Supports 10+ Screenshots) */}
+        <section id="app-studio" className="pt-2 pb-24 bg-white blueprint-grid text-zinc-900 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Main Interactive Studio Grid */}
+            {(() => {
+              const activeItem = APP_SCREENSHOTS.find((s) => s.id === activeScreenshotId) || APP_SCREENSHOTS[0];
+              const activeHotspotObj = activeItem.hotspots.find((h) => h.id === selectedHotspot) || activeItem.hotspots[0];
+
+              return (
+                <div>
+                  {/* Top Screen Selector Bar (Multi-Row 2-Line Wrap) */}
+                  <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10 max-w-4xl mx-auto">
+                    {APP_SCREENSHOTS.map((s) => (
+                      <button
+                        key={s.id}
+                        onClick={() => {
+                          setActiveScreenshotId(s.id);
+                          setSelectedHotspot(1);
+                        }}
+                        className={`px-3.5 py-2 rounded-xl flex items-center gap-1.5 text-xs font-bold transition-all whitespace-nowrap ${
+                          activeItem.id === s.id
+                            ? "bg-primary-500 text-white shadow-lg shadow-primary-500/25 scale-105"
+                            : "bg-white text-zinc-600 border border-zinc-200/80 hover:bg-zinc-100 hover:text-zinc-900 shadow-xs"
+                        }`}
+                      >
+                        <Activity size={12} /> {s.title.split(" ")[0]} {s.title.split(" ")[1] || ""}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    {/* Left Column: Interactive Hotspot Cards List */}
+                    <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-zinc-200/80 mb-1">
+                        <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-1.5">
+                          <Sparkles size={13} className="fill-primary-500 text-primary-500" /> {activeItem.title}
+                        </span>
+                        <span className="text-[11px] font-bold text-primary-600 bg-primary-50 px-2.5 py-0.5 rounded-full border border-primary-100">
+                          {activeItem.category}
+                        </span>
+                      </div>
+
+                      {activeItem.hotspots && activeItem.hotspots.length > 0 ? (
+                        activeItem.hotspots.map((hs) => (
+                          <div
+                            key={hs.id}
+                            onClick={() => setSelectedHotspot(hs.id)}
+                            className={`p-6 rounded-2xl border transition-all cursor-pointer ${
+                              selectedHotspot === hs.id
+                                ? "bg-white border-2 border-primary-500 shadow-xl shadow-primary-500/10 translate-x-2"
+                                : "bg-white/80 backdrop-blur-sm border-zinc-200/80 hover:bg-white hover:border-zinc-300 shadow-sm"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-3">
+                                <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs border ${
+                                  selectedHotspot === hs.id ? "bg-primary-500 text-white border-primary-400" : "bg-zinc-100 text-zinc-600 border-zinc-200"
+                                }`}>
+                                  {hs.id}
+                                </span>
+                                <h4 className="font-bold text-base text-zinc-900">{hs.title}</h4>
+                              </div>
+                              <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full border ${hs.color}`}>
+                                {hs.badge}
+                              </span>
+                            </div>
+                            <p className="text-xs text-zinc-500 font-medium pl-10 leading-relaxed">
+                              {hs.desc}
+                            </p>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="p-6 bg-white rounded-2xl border border-zinc-200 shadow-sm">
+                          <h4 className="font-bold text-base text-zinc-900 mb-2">{activeItem.title}</h4>
+                          <p className="text-xs text-zinc-500 font-medium leading-relaxed">{activeItem.desc}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Right Column: Centered Screenshot Viewport */}
+                    <div className="lg:col-span-7 flex items-center justify-center">
+                      <div className="rounded-3xl border border-zinc-200/90 bg-white overflow-hidden shadow-2xl relative w-full">
+                        {/* Mockup Header Bar */}
+                        <div className="bg-zinc-100 px-4 py-3 border-b border-zinc-200 flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-red-400" />
+                            <div className="w-3 h-3 rounded-full bg-amber-400" />
+                            <div className="w-3 h-3 rounded-full bg-green-400" />
+                          </div>
+
+                          <div className="text-xs font-mono text-zinc-500 bg-white px-3 py-1 rounded-lg border border-zinc-200/80 shadow-xs truncate max-w-[280px]">
+                            shopify.com/admin/apps/trakit/{activeItem.id}
+                          </div>
+
+                          <button
+                            onClick={() =>
+                              setLightboxImage({
+                                src: activeItem.src,
+                                title: activeItem.title,
+                                desc: activeItem.desc
+                              })
+                            }
+                            className="text-xs font-bold text-primary-600 flex items-center gap-1 hover:text-primary-700 transition-colors"
+                          >
+                            <Maximize2 size={12} /> Full Screen
+                          </button>
+                        </div>
+
+                        {/* Image Viewport */}
+                        <div className="relative bg-white overflow-hidden group flex items-center justify-center">
+                          <img
+                            src={activeItem.src}
+                            alt={activeItem.title}
+                            className="w-full h-auto object-contain block"
+                          />
+
+                          {/* Hotspot Pulse Overlay Pins */}
+                          {activeItem.hotspots && activeItem.hotspots.map((pin) => (
+                            <button
+                              key={pin.id}
+                              onClick={() => setSelectedHotspot(pin.id)}
+                              style={{ top: pin.top, left: pin.left }}
+                              className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition-all z-20 ${
+                                selectedHotspot === pin.id
+                                  ? "bg-primary-500 text-white ring-4 ring-primary-500/30 scale-125 shadow-lg shadow-primary-500/40"
+                                  : "bg-white text-zinc-700 border border-zinc-300 hover:bg-primary-500 hover:text-white shadow-md"
+                              }`}
+                            >
+                              <span className="absolute inset-0 rounded-full bg-primary-500 animate-ping opacity-30" />
+                              {pin.id}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </section>
 
@@ -556,9 +1101,55 @@ export default function LandingPage() {
                 className="inline-flex items-center gap-3 rounded-full bg-primary-500 px-12 py-6 text-xl font-black text-white transition-all hover:bg-primary-600 shadow-2xl shadow-primary-500/40 active:scale-95"
               >
                 Install Now on Shopify <ArrowRight size={24} />
-              </a>
+             </a>
           </div>
         </section>
+
+        {/* Lightbox Modal for Screenshots */}
+        <AnimatePresence>
+          {lightboxImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setLightboxImage(null)}
+              className="fixed inset-0 z-50 bg-zinc-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative max-w-6xl w-full bg-zinc-900 rounded-3xl border border-zinc-800 overflow-hidden shadow-2xl"
+              >
+                {/* Modal Top Bar */}
+                <div className="px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-900/90">
+                  <div>
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                      <Sparkles size={16} className="text-primary-500" />
+                      {lightboxImage.title}
+                    </h3>
+                    <p className="text-xs text-zinc-400 font-medium">{lightboxImage.desc}</p>
+                  </div>
+                  <button
+                    onClick={() => setLightboxImage(null)}
+                    className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white flex items-center justify-center transition-colors"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                {/* Modal Image Container */}
+                <div className="p-4 sm:p-6 bg-zinc-950 max-h-[80vh] overflow-y-auto">
+                  <img
+                    src={lightboxImage.src}
+                    alt={lightboxImage.title}
+                    className="w-full h-auto rounded-xl border border-zinc-800 shadow-xl"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );
